@@ -9,10 +9,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
-    private float size = 1.22f;
-    private float offset = 0.59f;
-    private float size1 = 0.98f;
-    private float offset1 = 2.011f;
+    private float sizeSit = 1.22f;
+    private float offsetSit = 0.59f;
+    private float sizeStand = 0.98f;
+    private float offsetStand = 2.011f;
+    private bool isOnGround;
 
     // Start is called before the first frame update
     private void Awake()
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter(float horizontal,float vertical)
     {
-        speed = 4;
+        
         //Move Character Horizontally
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
@@ -45,8 +46,12 @@ public class PlayerController : MonoBehaviour
         //Move Character Vertically
         if(vertical > 0)
         {
-            jump = 30;
+            
             rb2d.AddForce( new Vector2(0f,jump), ForceMode2D.Force);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
         }
     }
 
@@ -68,9 +73,10 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = scale;
 
-        if (vertical > 0)
-        {
+       if (vertical > 0 && isOnGround==true)
+       {
             animator.SetBool("Jump", true);
+            rb2d.AddForce(Vector2.up * jump);
         }
         else
         {
@@ -79,15 +85,25 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) == true)
         {
             animator.SetBool("isSit", true);
-            boxcollider.size = new Vector2(boxcollider.size.x, size);
-            boxcollider.offset = new Vector2(boxcollider.offset.x, offset);
+            boxcollider.size = new Vector2(boxcollider.size.x, sizeSit);
+            boxcollider.offset = new Vector2(boxcollider.offset.x, offsetSit);
 
         }
         else
         {
             animator.SetBool("isSit", false);
-            boxcollider.offset = new Vector2(boxcollider.offset.x, size1);
-            boxcollider.size = new Vector2(boxcollider.size.x, offset1);
+            boxcollider.offset = new Vector2(boxcollider.offset.x, sizeStand);
+            boxcollider.size = new Vector2(boxcollider.size.x, offsetStand);
         }
     }
+    private void OnCollisionEnter2D(Collision2D ground)
+    {
+        if (ground.gameObject.tag=="Ground")
+        {
+            isOnGround = true;
+            Debug.Log("Onground");
+        }
+    }
+    
+    
 }
