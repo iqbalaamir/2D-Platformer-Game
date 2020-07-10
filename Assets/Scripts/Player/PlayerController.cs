@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,15 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
-    private float size = 1.22f;
-    private float offset = 0.59f;
-    private float size1 = 0.98f;
-    private float offset1 = 2.011f;
+    public float sizeSit ;
+    public float offsetSit ;
+    public float sizeStand ;
+    public float offsetStand ;
+
+   
+
+    private bool isOnGround;
+   
 
     // Start is called before the first frame update
     private void Awake()
@@ -20,6 +26,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player controller awake");
         rb2d=gameObject.GetComponent<Rigidbody2D>();
         boxcollider=gameObject.GetComponent<BoxCollider2D>();
+        
     }
 
     // Update is called once per frame   
@@ -36,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter(float horizontal,float vertical)
     {
-        speed = 4;
+        
         //Move Character Horizontally
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
@@ -45,9 +52,12 @@ public class PlayerController : MonoBehaviour
         //Move Character Vertically
         if(vertical > 0)
         {
-            jump = 30;
-            rb2d.AddForce( new Vector2(0f,jump), ForceMode2D.Force);
-        }
+            if(isOnGround)
+            rb2d.AddForce(Vector2.up * jump);
+            
+        }        
+        
+        
     }
 
     private void PlayMovementAnimation(float horizontal,float vertical)
@@ -68,9 +78,11 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = scale;
 
-        if (vertical > 0)
-        {
+       if (vertical > 0 )
+       {
             animator.SetBool("Jump", true);
+            
+
         }
         else
         {
@@ -79,15 +91,32 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) == true)
         {
             animator.SetBool("isSit", true);
-            boxcollider.size = new Vector2(boxcollider.size.x, size);
-            boxcollider.offset = new Vector2(boxcollider.offset.x, offset);
+            boxcollider.size = new Vector2(boxcollider.size.x, sizeSit);
+            boxcollider.offset = new Vector2(boxcollider.offset.x, offsetSit);
 
         }
         else
         {
             animator.SetBool("isSit", false);
-            boxcollider.offset = new Vector2(boxcollider.offset.x, size1);
-            boxcollider.size = new Vector2(boxcollider.size.x, offset1);
+            boxcollider.offset = new Vector2(boxcollider.offset.x, sizeStand);
+            boxcollider.size = new Vector2(boxcollider.size.x, offsetStand);
         }
     }
+    private void OnCollisionEnter2D(Collision2D ground)
+    {
+        if (ground.gameObject.layer== 8)
+        {
+            isOnGround = true;
+            Debug.Log("Onground");
+        }
+    }
+    private void OnCollisionExit2D(Collision2D ground)
+    {
+        if (ground.gameObject.layer == 8)
+        {
+            isOnGround = false;
+        }
+    }
+
+
 }
