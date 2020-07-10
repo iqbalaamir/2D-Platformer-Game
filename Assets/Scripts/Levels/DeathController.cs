@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathController : MonoBehaviour
 {
-    public string Idle;
+    public string Scene;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene(Idle);
+            SceneManager.LoadScene(Scene);
+            Debug.Log("Player Died");
+                
         }
         
     }

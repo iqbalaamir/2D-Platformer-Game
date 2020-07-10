@@ -1,19 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public ScoreController scoreController;
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
-    private float sizeSit = 1.22f;
-    private float offsetSit = 0.59f;
-    private float sizeStand = 0.98f;
-    private float offsetStand = 2.011f;
+    public float sizeSit ;
+    public float offsetSit ;
+    public float sizeStand ;
+    public float offsetStand ;
+
+    public void PickUpKey()
+    {
+        Debug.Log("Picked Up Key");
+        scoreController.AddScore(10);
+    }
+
     private bool isOnGround;
+    private bool jumpInitaited;
 
     // Start is called before the first frame update
     private void Awake()
@@ -21,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player controller awake");
         rb2d=gameObject.GetComponent<Rigidbody2D>();
         boxcollider=gameObject.GetComponent<BoxCollider2D>();
+        
     }
 
     // Update is called once per frame   
@@ -46,13 +57,11 @@ public class PlayerController : MonoBehaviour
         //Move Character Vertically
         if(vertical > 0)
         {
-            
-            rb2d.AddForce( new Vector2(0f,jump), ForceMode2D.Force);
-        }
-        else
-        {
-            animator.SetBool("Jump", false);
-        }
+            if(isOnGround)
+            rb2d.AddForce(Vector2.up * jump);
+        }        
+        
+       
     }
 
     private void PlayMovementAnimation(float horizontal,float vertical)
@@ -73,10 +82,11 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = scale;
 
-       if (vertical > 0 && isOnGround==true)
+       if (vertical > 0 )
        {
             animator.SetBool("Jump", true);
-            rb2d.AddForce(Vector2.up * jump);
+            
+
         }
         else
         {
@@ -98,12 +108,20 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D ground)
     {
-        if (ground.gameObject.tag=="Ground")
+        if (ground.gameObject.layer== 8)
         {
             isOnGround = true;
             Debug.Log("Onground");
         }
     }
-    
-    
+    private void OnCollisionExit2D(Collision2D ground)
+    {
+        if (ground.gameObject.layer == 8)
+        {
+            isOnGround = false;
+            Debug.Log("Not on Ground");
+        }
+    }
+
+
 }
