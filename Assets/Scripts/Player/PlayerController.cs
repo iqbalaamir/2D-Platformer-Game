@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
    
 
     private bool isOnGround;
-    private bool jumpInitaited;
+   
 
     // Start is called before the first frame update
     private void Awake()
@@ -54,13 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             if(isOnGround && !jumpInitaited)
             rb2d.AddForce(Vector2.up * jump);
-            jumpInitaited = true;
+            
         }        
         
-        else
-        {
-            jumpInitaited = false;
-        }
+        
     }
 
     private void PlayMovementAnimation(float horizontal,float vertical)
