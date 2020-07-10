@@ -15,10 +15,7 @@ public class PlayerController : MonoBehaviour
     public float sizeStand ;
     public float offsetStand ;
 
-    public void PickUpKey()
-    {
-        Debug.Log("Picked Up Key");
-    }
+   
 
     private bool isOnGround;
     private bool jumpInitaited;
