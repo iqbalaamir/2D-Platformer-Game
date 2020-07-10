@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         //Move Character Vertically
         if(vertical > 0)
         {
-            if(isOnGround && !jumpInitaited)
+            if(isOnGround)
             rb2d.AddForce(Vector2.up * jump);
             
         }        
