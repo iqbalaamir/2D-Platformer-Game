@@ -2,19 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody2D rb2d;
+
     public ScoreController scoreController;
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
     public float jump;
-    private Rigidbody2D rb2d;
     public float sizeSit ;
     public float offsetSit ;
     public float sizeStand ;
-    public float offsetStand ;
+    public float offsetStand;
+
+    public void KillPlayer()
+    {
+        Debug.Log("Player Died By Enemy");
+        SceneManager.LoadScene(0);
+
+    }
+
+    
 
     public void PickUpKey()
     {
@@ -59,6 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             if(isOnGround)
             rb2d.AddForce(Vector2.up * jump);
+            
         }        
         
        
