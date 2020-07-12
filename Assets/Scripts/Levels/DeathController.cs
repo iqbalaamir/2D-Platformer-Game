@@ -15,6 +15,7 @@ public class DeathController : MonoBehaviour
             Debug.Log("Player Died");
                 
         }
+       
         
     }
 }

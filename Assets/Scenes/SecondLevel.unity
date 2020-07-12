@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 2096096964}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreController: {fileID: 0}
   animator: {fileID: 2096096959}
+  ani: {fileID: 0}
   boxcollider: {fileID: 2096096961}
   speed: 10
   jump: 0
@@ -732,6 +733,7 @@ MonoBehaviour:
   offsetSit: 0
   sizeStand: 0
   offsetStand: 0
+  score: 0
 --- !u!61 &2096096961
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -814,7 +816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096096958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.16, y: 0.43, z: 0}
+  m_LocalPosition: {x: -2.03, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

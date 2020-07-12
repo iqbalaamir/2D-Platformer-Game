@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
     public Animator animator;
+    public Animator ani;
     public BoxCollider2D boxcollider;
     public float speed;
     public float jump;
@@ -17,9 +18,11 @@ public class PlayerController : MonoBehaviour
     public float offsetSit ;
     public float sizeStand ;
     public float offsetStand;
+    public int score;
 
     public void KillPlayer()
     {
+        
         Debug.Log("Player Died By Enemy");
         SceneManager.LoadScene(0);
 
@@ -30,11 +33,12 @@ public class PlayerController : MonoBehaviour
     public void PickUpKey()
     {
         Debug.Log("Picked Up Key");
-        scoreController.AddScore(10);
+        scoreController.AddScore(score);
     }
 
     private bool isOnGround;
     private bool jumpInitaited;
+    
 
     // Start is called before the first frame update
     private void Awake()
@@ -117,6 +121,7 @@ public class PlayerController : MonoBehaviour
             boxcollider.offset = new Vector2(boxcollider.offset.x, sizeStand);
             boxcollider.size = new Vector2(boxcollider.size.x, offsetStand);
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D ground)
     {
@@ -134,6 +139,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Not on Ground");
         }
     }
+
+   
 
 
 }
