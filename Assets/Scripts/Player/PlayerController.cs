@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
     public Animator animator;
-    public Animator ani;
     public BoxCollider2D boxcollider;
     public float speed;
     public float jump;
@@ -19,16 +18,16 @@ public class PlayerController : MonoBehaviour
     public float sizeStand ;
     public float offsetStand;
     public int score;
+    public GameObject gameOverText, restartButton;
 
     public void KillPlayer()
     {
-        
+        animator.SetBool("Dead", true);
         Debug.Log("Player Died By Enemy");
-        SceneManager.LoadScene(0);
+        
 
     }
-
-    
+     
 
     public void PickUpKey()
     {
@@ -49,6 +48,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        gameOverText.SetActive(false);
+        restartButton.SetActive(false);
+    }
+
+
     // Update is called once per frame   
     private void Update()
     {
@@ -60,7 +66,6 @@ public class PlayerController : MonoBehaviour
     }
 
     
-
     private void MoveCharacter(float horizontal,float vertical)
     {
         
@@ -130,6 +135,14 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             Debug.Log("Onground");
         }
+        if(ground.gameObject.tag.Equals ("Enemy"))
+        {
+            gameOverText.SetActive(true);
+            restartButton.SetActive(true);
+            
+        }
+        
+       
     }
     private void OnCollisionExit2D(Collision2D ground)
     {
@@ -138,8 +151,9 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             Debug.Log("Not on Ground");
         }
+        
     }
-
+    
    
 
 

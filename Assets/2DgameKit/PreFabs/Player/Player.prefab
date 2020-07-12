@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406633677007654060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05384775, y: 0.4707108, z: -100}
+  m_LocalPosition: {x: 5.54, y: 1.16, z: -100}
   m_LocalScale: {x: 0.5384775, y: 0.52301204, z: 1}
   m_Children: []
   m_Father: {fileID: 6406633677908075820}
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreController: {fileID: 0}
   animator: {fileID: 6406633677908075822}
+  ani: {fileID: 0}
   boxcollider: {fileID: 6406633677908075794}
   speed: 10
   jump: 600
@@ -253,3 +254,4 @@ MonoBehaviour:
   offsetSit: 0.59
   sizeStand: 0.98
   offsetStand: 2.011
+  score: 10
