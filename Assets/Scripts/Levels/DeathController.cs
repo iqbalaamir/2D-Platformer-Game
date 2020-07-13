@@ -14,16 +14,10 @@ public class DeathController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            animator.SetBool("Dead", true);
-            Destroy(collision.gameObject);
-            Debug.Log("Player Died");
-           
-            
-            
-
-                
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.KillPlayer();
         }
-       
-        
+
+
     }
 }

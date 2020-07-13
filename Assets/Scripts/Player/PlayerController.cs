@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("Dead", true);
         Debug.Log("Player Died By Enemy");
-        
-
     }
      
 
