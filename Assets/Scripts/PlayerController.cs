@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Game.Player
 {
-<<<<<<< Updated upstream
+
     public Animator animator;
     public BoxCollider2D boxcollider;
 
