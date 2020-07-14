@@ -1,15 +1,20 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody2D rb2d;
+
+    public ScoreController scoreController;
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
     public float jump;
-    private Rigidbody2D rb2d;
+
+    
     public float sizeSit ;
     public float offsetSit ;
     public float sizeStand ;
@@ -20,14 +25,41 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
    
 
-    // Start is called before the first frame update
+    
+    public int score;
+    public GameObject gameOverText, restartButton;
+
+    public void KillPlayer()
+    {
+        animator.SetBool("Dead", true);
+        Debug.Log("Player Died By Enemy");
+    }
+     
+
+    public void PickUpKey()
+    {
+        Debug.Log("Picked Up Key");
+        scoreController.AddScore(score);
+    }
+
+    private bool jumpInitaited;
+    
+
     private void Awake()
     {
         Debug.Log("Player controller awake");
         rb2d=gameObject.GetComponent<Rigidbody2D>();
         boxcollider=gameObject.GetComponent<BoxCollider2D>();
         
+
     }
+
+    private void Start()
+    {
+        gameOverText.SetActive(false);
+        restartButton.SetActive(false);
+    }
+
 
     // Update is called once per frame   
     private void Update()
@@ -40,7 +72,6 @@ public class PlayerController : MonoBehaviour
     }
 
     
-
     private void MoveCharacter(float horizontal,float vertical)
     {
         
@@ -57,7 +88,7 @@ public class PlayerController : MonoBehaviour
             
         }        
         
-        
+
     }
 
     private void PlayMovementAnimation(float horizontal,float vertical)
@@ -101,6 +132,7 @@ public class PlayerController : MonoBehaviour
             boxcollider.offset = new Vector2(boxcollider.offset.x, sizeStand);
             boxcollider.size = new Vector2(boxcollider.size.x, offsetStand);
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D ground)
     {
@@ -109,7 +141,12 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             Debug.Log("Onground");
         }
+        
+        
+       
     }
+   
+
     private void OnCollisionExit2D(Collision2D ground)
     {
         if (ground.gameObject.layer == 8)
