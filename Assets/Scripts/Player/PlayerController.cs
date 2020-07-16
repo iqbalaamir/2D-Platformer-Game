@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal, vertical);
+        PlayerPrefs.GetString("Level","")
 
     }
 

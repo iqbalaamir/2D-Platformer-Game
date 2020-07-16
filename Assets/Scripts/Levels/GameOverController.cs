@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,6 +12,7 @@ public class GameOverController : MonoBehaviour
     {
         gameObject.SetActive(false);
         buttonRestart.onClick.AddListener(ReloadScene);
+        
     }
 
     public void PlayerDied()
@@ -24,6 +23,8 @@ public class GameOverController : MonoBehaviour
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene(Scene);
+      Scene scene =  SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
     }
+   
 }
