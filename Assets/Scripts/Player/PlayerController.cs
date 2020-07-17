@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal, vertical);
-        PlayerPrefs.GetString("Level","")
+        
 
     }
 
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
             
-        if (playerHealth.health != 0)
+        if (playerHealth.health != 1)
         {
             playerHealth.ReduceHealth();
             transform.position = respawn;

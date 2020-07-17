@@ -2182,7 +2182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876849139}
   - component: {fileID: 876849140}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -3978,7 +3978,7 @@ PrefabInstance:
     - target: {fileID: 1641320744927426265, guid: d24bbbcfe7a701643b903d84e7305157,
         type: 3}
       propertyPath: m_Name
-      value: SlowEnemy
+      value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 2198053135738776939, guid: d24bbbcfe7a701643b903d84e7305157,
         type: 3}

@@ -29,7 +29,7 @@ public class TurnAround : MonoBehaviour
             Debug.Log("Wall Touched");
         }
 
-        else
+        if (collision.gameObject.layer == 11)
         {
             moveRight = false;
         }

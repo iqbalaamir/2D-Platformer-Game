@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(Button)) ]
 public class LevelLoader : MonoBehaviour
 {
     private Button button;
