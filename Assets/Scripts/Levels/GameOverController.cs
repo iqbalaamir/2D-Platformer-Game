@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 ﻿using UnityEngine;
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+>>>>>>> Stashed changes
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,7 +18,10 @@ public class GameOverController : MonoBehaviour
     {
         gameObject.SetActive(false);
         buttonRestart.onClick.AddListener(ReloadScene);
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
     }
 
     public void PlayerDied()
@@ -23,8 +32,13 @@ public class GameOverController : MonoBehaviour
 
     public void ReloadScene()
     {
+<<<<<<< Updated upstream
       Scene scene =  SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
     }
    
+=======
+        SceneManager.LoadScene(Scene);
+    }
+>>>>>>> Stashed changes
 }

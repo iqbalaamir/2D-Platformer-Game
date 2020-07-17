@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 0ed5c41fb7d6afe479aa786ae31aa32b
+<<<<<<< Updated upstream
+=======
+  - enabled: 1
+    path: Assets/Scenes/FirstLevel.unity
+    guid: f1e020a50479776468cdfbe4b790a27b
+>>>>>>> Stashed changes
   - enabled: 1
     path: Assets/Scenes/Levels/FirstLevel.unity
     guid: f1e020a50479776468cdfbe4b790a27b

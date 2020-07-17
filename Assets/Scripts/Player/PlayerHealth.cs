@@ -22,10 +22,30 @@ public class PlayerHealth : MonoBehaviour
         }
         for (int i = 0; i < hearts.Length; i++)
         {
+<<<<<<< Updated upstream
             hearts[i].sprite = (i < health) ? fullHeart : emptyHeart;
 
             hearts[i].enabled = (i < numOfHearts) ? true : false;
 
+=======
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            
+            if (i<numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+>>>>>>> Stashed changes
         }
     }
     

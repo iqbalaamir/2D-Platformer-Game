@@ -141,7 +141,11 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
             
+<<<<<<< Updated upstream
         if (playerHealth.health != 1)
+=======
+        if (playerHealth.health != 0)
+>>>>>>> Stashed changes
         {
             playerHealth.ReduceHealth();
             transform.position = respawn;
