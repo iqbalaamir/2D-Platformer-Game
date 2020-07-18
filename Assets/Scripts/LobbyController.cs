@@ -13,6 +13,7 @@ public class LobbyController : MonoBehaviour
 
     private void PlayGame()
     {
-        LevelSelection.SetActive(true);
+        LevelSelection.SetActive( true );
+
     }
 }

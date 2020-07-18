@@ -12,7 +12,7 @@ public class LevelOverControl : MonoBehaviour
         if(collision.gameObject.GetComponent<PlayerController>() !=null)
         {
             Debug.Log("Level Crossed");
-            SceneManager.LoadScene(SecondScene);
+            LevelManager.Instance.MarkCurrentLevelComplete();
 
         }
     }
