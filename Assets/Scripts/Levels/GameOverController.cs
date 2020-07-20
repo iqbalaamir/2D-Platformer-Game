@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,7 +6,7 @@ public class GameOverController : MonoBehaviour
 {
    public string Scene;
    public Button buttonRestart;
-    public Button Lobby;
+   public Button Lobby;
    
 
     private void Awake()
@@ -26,6 +23,7 @@ public class GameOverController : MonoBehaviour
 
     public void PlayerDied()
     {
+        
 
         gameObject.SetActive(true);
     }

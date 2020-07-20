@@ -10,12 +10,22 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
     public GameOverController gameOverController;
+    public LevelPassedOver LevelPassedOver;
     public PlayerHealth playerHealth;
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
+
+    public void LevelClear()
+    {
+        LevelPassedOver.LevelPassed();
+    }
+
     public float jump;
     public float sizeSit ;
+
+   
+
     public float offsetSit ;
     public float sizeStand ;
     public float offsetStand ;
@@ -131,5 +141,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Picked Up Key");
         scoreController.AddScore(score);
     }
+
 
 }

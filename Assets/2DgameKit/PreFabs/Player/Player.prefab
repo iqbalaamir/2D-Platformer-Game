@@ -326,11 +326,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreController: {fileID: 0}
   gameOverController: {fileID: 0}
+  LevelPassedOver: {fileID: 0}
   playerHealth: {fileID: 0}
   animator: {fileID: 6406633677908075822}
   boxcollider: {fileID: 6406633677908075794}
   speed: 10
-  jump: 500
+  jump: 50
   sizeSit: 1.22
   offsetSit: 0.59
   sizeStand: 0.98
