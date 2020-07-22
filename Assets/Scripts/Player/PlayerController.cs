@@ -26,15 +26,18 @@ public class PlayerController : MonoBehaviour
 
    
 
+
     public float offsetSit ;
     public float sizeStand ;
     public float offsetStand ;
+
 
     private bool isOnGround;
     private bool jumpInitaited;
     private Vector2 spawnPosition;
     public int score;
     private Vector3 respawn;
+
 
     private void Awake()
     {
@@ -49,10 +52,12 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal, vertical);
+
     }
     
     private void MoveCharacter(float horizontal,float vertical)
     {
+
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
@@ -64,6 +69,9 @@ public class PlayerController : MonoBehaviour
             rb2d.AddForce(Vector2.up * jump);
         }        
      
+
+            
+
     }
 
     private void PlayMovementAnimation(float horizontal,float vertical)
@@ -71,11 +79,13 @@ public class PlayerController : MonoBehaviour
         
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         
+
         Vector3 scale = transform.localScale;
 
         if (horizontal < 0)
         {
             SoundManager.Instance.Play(Sounds.PlayerMove); 
+
             scale.x = -1f * Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
@@ -88,6 +98,7 @@ public class PlayerController : MonoBehaviour
        if (vertical > 0 )
         {
             animator.SetBool("Jump", true);
+
         }
         else
         {
@@ -98,6 +109,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isSit", true);
             boxcollider.size = new Vector2(boxcollider.size.x, sizeSit);
             boxcollider.offset = new Vector2(boxcollider.offset.x, offsetSit);
+
         }
         else
         {
@@ -105,6 +117,7 @@ public class PlayerController : MonoBehaviour
             boxcollider.offset = new Vector2(boxcollider.offset.x, sizeStand);
             boxcollider.size = new Vector2(boxcollider.size.x, offsetStand);
         }
+
     }
     private void OnCollisionEnter2D(Collision2D ground)
     {
@@ -113,7 +126,9 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             Debug.Log("Onground");
         }
+       
     }
+   
     private void OnCollisionExit2D(Collision2D ground)
     {
         if (ground.gameObject.layer == 8)
@@ -144,6 +159,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Picked Up Key");
         scoreController.AddScore(score);
     }
+
 
 
 }

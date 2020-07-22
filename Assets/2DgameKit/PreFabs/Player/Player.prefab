@@ -79,6 +79,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+
 --- !u!1 &6406633677007654060
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6406633677007654035}
   - component: {fileID: 6406633677007654034}
+
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -108,6 +110,7 @@ Transform:
   m_LocalScale: {x: 0.5384775, y: 0.52301204, z: 1}
   m_Children:
   - {fileID: 793030129}
+
   m_Father: {fileID: 6406633677908075820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,6 +125,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.58769786, g: 0.6603774, b: 0.21493416, a: 0}
+
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -138,6 +142,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5.7499976
+
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -148,11 +153,13 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 0
+
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+
 --- !u!1 &6406633677908075817
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +276,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
+
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -323,6 +331,7 @@ MonoBehaviour:
   boxcollider: {fileID: 6406633677908075794}
   speed: 10
   jump: 50
+
   sizeSit: 1.22
   offsetSit: 0.59
   sizeStand: 0.98

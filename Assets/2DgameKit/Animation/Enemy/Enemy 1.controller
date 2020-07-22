@@ -126,6 +126,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+
 --- !u!1107 &1107561809123044186
 AnimatorStateMachine:
   serializedVersion: 5
@@ -147,6 +148,7 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102859344802234064}
     m_Position: {x: 305, y: 195, z: 0}
+
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
