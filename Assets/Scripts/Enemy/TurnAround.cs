@@ -30,6 +30,7 @@ public class TurnAround : MonoBehaviour
         }
 
         if (collision.gameObject.layer == 11)
+
         {
             moveRight = false;
         }

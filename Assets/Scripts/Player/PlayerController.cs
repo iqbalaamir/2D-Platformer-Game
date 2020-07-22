@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public ScoreController scoreController;
     public GameOverController gameOverController;
     public PlayerHealth playerHealth;
+
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
@@ -37,24 +38,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player controller awake");
         rb2d=gameObject.GetComponent<Rigidbody2D>();
         boxcollider=gameObject.GetComponent<BoxCollider2D>();
-        
-
     }
-
-   
-
-    // Update is called once per frame   
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal, vertical);
-        
-
     }
-
-    
     private void MoveCharacter(float horizontal,float vertical)
     {
         
@@ -141,11 +132,8 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
             
-<<<<<<< Updated upstream
         if (playerHealth.health != 1)
-=======
-        if (playerHealth.health != 0)
->>>>>>> Stashed changes
+
         {
             playerHealth.ReduceHealth();
             transform.position = respawn;
@@ -164,5 +152,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Picked Up Key");
         scoreController.AddScore(score);
     }
+
 
 }
