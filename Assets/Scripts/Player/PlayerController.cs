@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public ScoreController scoreController;
+    public GameOverController gameOverController;
+    public PlayerHealth playerHealth;
+
     public Animator animator;
     public BoxCollider2D boxcollider;
     public float speed;
@@ -23,55 +26,26 @@ public class PlayerController : MonoBehaviour
    
 
     private bool isOnGround;
-   
-
-    
-    public int score;
-    public GameObject gameOverText, restartButton;
-
-    public void KillPlayer()
-    {
-        animator.SetBool("Dead", true);
-        Debug.Log("Player Died By Enemy");
-    }
-     
-
-    public void PickUpKey()
-    {
-        Debug.Log("Picked Up Key");
-        scoreController.AddScore(score);
-    }
 
     private bool jumpInitaited;
-    
+    private Vector2 spawnPosition;
+
+    public int score;
+    private Vector3 respawn;
 
     private void Awake()
     {
         Debug.Log("Player controller awake");
         rb2d=gameObject.GetComponent<Rigidbody2D>();
         boxcollider=gameObject.GetComponent<BoxCollider2D>();
-        
-
     }
-
-    private void Start()
-    {
-        gameOverText.SetActive(false);
-        restartButton.SetActive(false);
-    }
-
-
-    // Update is called once per frame   
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal, vertical);
-
     }
-
-    
     private void MoveCharacter(float horizontal,float vertical)
     {
         
@@ -153,6 +127,30 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = false;
         }
+    }
+
+    public void KillPlayer()
+    {
+            
+        if (playerHealth.health != 1)
+
+        {
+            playerHealth.ReduceHealth();
+            transform.position = respawn;
+        }
+        else
+        {
+            //animator.SetBool("Dead", true);
+            Debug.Log("Player Died By Enemy");
+            gameOverController.PlayerDied();
+        }
+    }
+
+
+    public void PickUpKey()
+    {
+        Debug.Log("Picked Up Key");
+        scoreController.AddScore(score);
     }
 
 
