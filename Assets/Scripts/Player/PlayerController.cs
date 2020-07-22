@@ -68,12 +68,14 @@ public class PlayerController : MonoBehaviour
 
     private void PlayMovementAnimation(float horizontal,float vertical)
     {
+        
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         
         Vector3 scale = transform.localScale;
 
         if (horizontal < 0)
         {
+            SoundManager.Instance.Play(Sounds.PlayerMove); 
             scale.x = -1f * Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (playerHealth.health !=0)
+        if (playerHealth.health !=1)
         {
             playerHealth.ReduceHealth();
             transform.position = respawn;
@@ -138,6 +140,7 @@ public class PlayerController : MonoBehaviour
     }
     public void PickUpKey()
     {
+        
         Debug.Log("Picked Up Key");
         scoreController.AddScore(score);
     }
