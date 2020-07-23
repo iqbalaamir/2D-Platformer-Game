@@ -29,6 +29,7 @@ public class TurnAround : MonoBehaviour
             Debug.Log("Wall Touched");
         }
 
+
         if (collision.gameObject.layer == 11)
 
         {
