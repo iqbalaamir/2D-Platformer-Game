@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class KeyController : MonoBehaviour
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.PickUpKey();
+            SoundManager.Instance.Play(Sounds.KeyPickup);
             Destroy(gameObject);
         }
     }

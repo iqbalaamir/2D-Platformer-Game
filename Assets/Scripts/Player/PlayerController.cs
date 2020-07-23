@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -60,7 +57,7 @@ public class PlayerController : MonoBehaviour
         //Move Character Vertically
         if(vertical > 0)
         {
-            if(isOnGround)
+            if (isOnGround)
             rb2d.AddForce(Vector2.up * jump);
         }        
      
@@ -75,11 +72,12 @@ public class PlayerController : MonoBehaviour
 
         if (horizontal < 0)
         {
-            SoundManager.Instance.Play(Sounds.PlayerMove); 
+            SoundManager.Instance.Play(Sounds.PlayerMove);
             scale.x = -1f * Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
         {
+            SoundManager.Instance.Play(Sounds.PlayerMove);
             scale.x = Mathf.Abs(scale.x);
         }
 
@@ -87,10 +85,12 @@ public class PlayerController : MonoBehaviour
 
        if (vertical > 0 )
         {
+            SoundManager.Instance.Play(Sounds.PlayerJump);
             animator.SetBool("Jump", true);
         }
         else
         {
+            //SoundManager.Instance.Play(Sounds.PlayerLand);
             animator.SetBool("Jump", false);
         }
         if (Input.GetKey(KeyCode.LeftControl) == true)

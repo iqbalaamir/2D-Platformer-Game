@@ -90,5 +90,8 @@ public enum Sounds
     PlayerMove,
     PlayerDeath,
     EnemyDeath,
-    Music
+    Music,
+    PlayerJump,
+    KeyPickup,
+    PlayerLand
 }
